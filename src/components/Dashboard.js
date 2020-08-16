@@ -1,6 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { _getTweets } from '../utils/_DATA'
+import Tweet from './Tweet'
+import styled from 'styled-components'
+
+const TweetWrapper = styled.li`
+    list-style: none;    
+`
 
 const Dashboard = ({tweetIds}) => {
 
@@ -9,9 +15,9 @@ const Dashboard = ({tweetIds}) => {
             <h3> Your Timeline</h3>
             <ul>
                 {tweetIds.map(id => (
-                    <li key={id}>
-                        <div>Tweet ID: {id}</div>
-                    </li>
+                    <TweetWrapper key={id}>
+                        <Tweet id={id} />
+                    </TweetWrapper>
                 ))}
             </ul>
         </div>
