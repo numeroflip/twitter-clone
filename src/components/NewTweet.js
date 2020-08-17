@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import { handleAddTweet } from '../actions/tweets'
 
-export default function NewTweet (props) {
+
+function NewTweet ({dispatch, id}) {
 
     const [text, setText] = useState('')
 
@@ -12,13 +15,15 @@ export default function NewTweet (props) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // TODO add tweet to store
+        dispatch(handleAddTweet(text, id))
 
         console.log('New Tweet: ', text)
         setText('')
     }
 
     const tweetLeft = 280 - text.length
+
+    // TODO : Redirect to the home view when submitted
 
     return(
         <div>
@@ -45,3 +50,5 @@ export default function NewTweet (props) {
         </div>
     )
 }
+
+export default connect()(NewTweet)
