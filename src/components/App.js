@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
+import LoadingBar from 'react-redux-loading'
+import NewTweet from './NewTweet'
 
 const App = ({dispatch, loading}) => {
   useEffect(() => {
@@ -12,7 +14,8 @@ const App = ({dispatch, loading}) => {
 
   return (
     <div className="App">
-       {!loading && <Dashboard />}
+      <LoadingBar />
+      {!loading && <NewTweet />}
     </div>
   );
 } ;
